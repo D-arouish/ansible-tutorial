@@ -1,45 +1,29 @@
-# How To Write Ansible Playbooks
+# ansible-tutorial
 
-This repository contains the examples and demos from the [How To Write Ansible Playbooks](https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks) Tutorial Series.
+This repository contains Ansible tutorial exercises that I used to practice playbooks, inventories, file distribution, and repeatable server setup.
 
-_Please notice that the playbooks in this repository are for demonstration and learning. They are not intended for production setups._
+## Contents
 
-## Usage
+- `inventory` for target hosts
+- `playbook-01.yml` to `playbook-12.yml` for progressive examples
+- `files/` and `ansible-nginx-demo/` for supporting resources
 
-To try these examples on your local Ansible setup, start by cloning this repository on your **Ansible Control Node**.
+## Focus
 
-```command
-git clone https://github.com/do-community/ansible-practice.git
-cd ansible-practice
-```
+- understanding playbook structure
+- practicing host targeting and variables
+- learning how Ansible can automate common administration tasks
 
-Edit the included `inventory` file to include your remote node(s):
+## Run Locally
 
-```command
-nano inventory
-```
-
-```ini
-
-[dev]
-203.0.113.10
-
-[all:vars]
-ansible_python_interpreter=/usr/bin/python3
-```
-
-Save and close the file. 
-
-You can run the playbooks with:
-
-```command
+```bash
+git clone https://github.com/D-arouish/ansible-tutorial.git
+cd ansible-tutorial
 ansible-playbook -i inventory playbook-01.yml -u REMOTE_USER
 ```
 
-If the playbook has a `become` directive it means you'll most probably will have to provide the `sudo` password for your connecting user. You dan do that by including the `-K` parameter:
+Use `-K` when the playbook needs elevated privileges.
 
-```command
-ansible-playbook -i inventory playbook-01.yml -u REMOTE_USER -K
-```
+## Notes
 
-For more details, please refer to the tutorial series: [How To Write Ansible Playbooks](https://www.digitalocean.com/community/tutorial_series/how-to-write-ansible-playbooks).
+This repository is meant for learning and experimentation. It is a good reference set for basic Ansible patterns before moving to larger automation projects.
